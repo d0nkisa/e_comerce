@@ -1,0 +1,14 @@
+.slider-container {
+    background: linear-gradient(45deg, #ff0080 8%, #7c42c1 33%, #0080ff 50%, #00ccb3 71%, #00ff80 85%);
+    background-size: 180%;
+    animation: gradient-animation 8s infinite alternate;
+}
+
+@keyframes gradient-animation{
+    from{
+        background-position: left;
+    }
+    to{
+        background-position: right;
+    }
+}
