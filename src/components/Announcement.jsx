@@ -14,7 +14,7 @@ const Container = styled.div`
 const Announcement = () => {
   return (
     <Container>
-        Supeeeeer!!!!!
+      &#128666; FREE DELIVERY FOR ORDERS OVER 50$! &#128666;
     </Container>
   )
 }
