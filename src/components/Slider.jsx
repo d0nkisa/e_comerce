@@ -2,6 +2,7 @@ import { ArrowLeftOutlined, ArrowRightOutlined } from '@material-ui/icons';
 import React from 'react';
 import styled from 'styled-components';
 import { useState } from "react";
+import { sliderItems } from '../data';
 
 const Container = styled.div`
     width: 96%;
@@ -12,6 +13,7 @@ const Container = styled.div`
     top: 35px;
     box-shadow:  0 2px 4px #636363;
 `;
+
 const Arrow = styled.div`
     width: 42px;
     height: 42px;
@@ -30,38 +32,49 @@ const Arrow = styled.div`
     cursor: pointer;
     z-index: 2;
 `;
+
 const Wrapper = styled.div`
-    width: 60%;
-    height: 94%;
+    height: 100%;
+    display: flex;
+    transition: all 1.5s ease;
+    transform: translateX(${(props) => props.slideIndex * -100}vw);
+`;
+
+const Slide = styled.div`
+    width: 100vw;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
-    margin: auto;
+    gap: 5%;
+    background-color: #${(props) => props.bg};
 `;
+
 const Card = styled.div`
-    width: 40%;
-    height: 98%;
+    width: 20%;
+    height: 90%;
     display: flex;
     flex-direction: column;
     background-color: white;
     align-items: center;
     justify-content: center;
     position: relative;
-    margin: auto;
     padding: 5px 10px;
-    box-shadow:  0 2px 4px #636363;
+    box-shadow: 0 2px 4px #636363;
 `;
+
 const SectionImage = styled.img`
     width: 96%;
     height: 75%;
+    object-fit: contain;
     display: flex;
     margin: auto;
 `;
+
 const SectionTitle = styled.h2`
     width: 96%;
     display: flex;
 `;
+
 const SectionDescription = styled.p`
     font-size: 14px;
     width: 96%;
@@ -79,23 +92,30 @@ const Slider = () => {
         setSlideIndex(slideIndex < 2 ? slideIndex + 1 : 0);
     }
     };
+    const handleCardClick = (id) => {
+        return ;
+    };
 
     return (
         <Container className='slider-container'>
             <Arrow direction="left" onClick={() => handleClick("left")}>
                 <ArrowLeftOutlined/>
             </Arrow>
-            <Wrapper>
-                <Card>
-                    <SectionImage/>
-                    <SectionTitle>Test Title</SectionTitle>
-                    <SectionDescription>Here you can order this that and other stuff to fill the space.</SectionDescription>
-                </Card>
-                <Card>
-                    <SectionImage/>
-                    <SectionTitle>Test Title</SectionTitle>
-                    <SectionDescription>Here you can order this that and other stuff to fill the space.</SectionDescription>
-                </Card>
+            <Wrapper slideIndex={slideIndex}>
+                {sliderItems.map((item) => (
+                    <Slide key={item.id}>
+                        <Card onClick={() => handleCardClick(item[0].id)}>
+                            <SectionImage src={item[0].img} />
+                            <SectionTitle>{item[0].title}</SectionTitle>
+                            <SectionDescription>{item[0].desc}</SectionDescription>
+                        </Card>
+                        <Card onClick={() => handleCardClick(item[1].id)}>
+                            <SectionImage src={item[1].img} />
+                            <SectionTitle>{item[1].title}</SectionTitle>
+                            <SectionDescription>{item[1].desc}</SectionDescription>
+                        </Card>
+                    </Slide>
+                ))}
             </Wrapper>
             <Arrow direction="right" onClick={() => handleClick("right")}>
                 <ArrowRightOutlined/>
