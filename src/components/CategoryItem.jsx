@@ -39,7 +39,6 @@ const Button = styled.button`
 const CategoryItem = ({item}) => {
   return (
     <Container>
-    TEST
         <Image src={item.img}/>
         <Info className="categories-info">
           <Title>{item.title}</Title>
