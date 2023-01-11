@@ -6,11 +6,12 @@ import { sliderItems } from '../data';
 
 const Container = styled.div`
     width: 96%;
-    height: 70vh;
+    height: 80vh;
     display: flex;
     position: relative;
     left: 2%;
     top: 35px;
+    margin-bottom: 200px;
     box-shadow:  0 2px 4px #636363;
 `;
 

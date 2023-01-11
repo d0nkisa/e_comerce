@@ -6,6 +6,10 @@ body {
     background-size: 180%;
     animation: gradient-animation 8s infinite alternate;
 }
+.categories-info:hover {
+    transition: all ease-in-out 1s;
+  backdrop-filter: blur(0px);
+}
 
 @keyframes gradient-animation{
     from{
